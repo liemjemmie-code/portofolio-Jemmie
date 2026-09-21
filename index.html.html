@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemmie Immanuel Liemmas, S.H. — Executive Portfolio</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #111726;
+            --bg-card: rgba(21, 29, 46, 0.7);
+            
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #64748b;
+            
+            --border-subtle: rgba(212, 175, 55, 0.15);
+            --border-hover: rgba(212, 175, 55, 0.4);
+            
+            --font-serif: 'Cinzel', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            font-family: var(--font-sans);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Accent Lights */
+        .ambient-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .ambient-glow-2 {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.1) 0%, rgba(0,0,0,0) 70%);
+            bottom: -300px;
+            left: -300px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Layout Grid */
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 3rem;
+            min-height: 100vh;
+        }
+
+        /* Left Sticky Sidebar */
+        aside.sidebar {
+            position: sticky;
+            top: 2rem;
+            height: calc(100vh - 4rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .profile-header {
+            text-align: center;
+        }
+
+        .avatar-frame {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-surface);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+        }
+
+        .profile-header h1 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-heading);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-header p {
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            margin: 2rem 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: var(--text-heading);
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 3px solid var(--gold-primary);
+        }
+
+        .contact-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item i {
+            color: var(--gold-primary);
+            width: 16px;
+        }
+
+        .contact-item:hover {
+            color: var(--text-heading);
+        }
+
+        /* Right Main Content */
+        main.content {
+            padding: 3rem 0;
+        }
+
+        .section-container {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-heading);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .header-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-subtle) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Luxury Cards */
+        .luxury-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .luxury-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title-group h3 {
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .card-title-group .institution {
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .card-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.92rem;
+            color: var(--text-body);
+        }
+
+        .card-bullets li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+            font-size: 0.6rem;
+            top: 0.2rem;
+        }
+
+        /* Executive Summary Callout */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(17, 23, 38, 0.8) 100%);
+            border-left: 3px solid var(--gold-primary);
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            border-color: var(--border-hover);
+            background: rgba(21, 29, 46, 0.9);
+        }
+
+        .skill-item i {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-item h4 {
+            color: var(--text-heading);
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Certifications Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-badge {
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 992px) {
+            .page-wrapper {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem;
+            }
+
+            aside.sidebar {
+                position: relative;
+                top: 0;
+                height: auto;
+                margin-top: 2rem;
+            }
+
+            main.content {
+                padding: 1rem 0 3rem 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-top {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .card-date {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <div class="page-wrapper">
+        <!-- Sidebar Kiri -->
+        <aside class="sidebar">
+            <div>
+                <div class="profile-header">
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">JI</div>
+                    </div>
+                    <h1>Jemmie Immanuel</h1>
+                    <p>Sarjana Hukum (S.H.)</p>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="#about" class="active"><i class="fa-solid fa-user"></i> Ringkasan</a></li>
+                        <li><a href="#organization"><i class="fa-solid fa-sitemap"></i> Organisasi</a></li>
+                        <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Pengalaman</a></li>
+                        <li><a href="#skills"><i class="fa-solid fa-scale-balanced"></i> Keahlian</a></li>
+                        <li><a href="#certifications"><i class="fa-solid fa-award"></i> Sertifikasi</a></li>
+                        <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> Pendidikan</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="contact-stack">
+                <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Jakarta, Indonesia</span>
+                <a href="mailto:liemjemmie@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> liemjemmie@gmail.com</a>
+                <a href="tel:+6287884025357" class="contact-item"><i class="fa-solid fa-phone"></i> +62 878-8402-5357</a>
+                <a href="https://linkedin.com/in/jemmieimmanuel-liemmas-825429326" target="_blank" class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+        </aside>
+
+        <!-- Konten Utama Kanan -->
+        <main class="content">
+            
+            <!-- Ringkasan Profil -->
+            <section id="about" class="section-container">
+                <div class="section-header">
+                    <h2>Profil Eksekutif</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="executive-summary">
+                    Lulusan Hukum (<em>Summa Cum Laude</em> / IPK 3.84) dari Universitas Pamulang dengan pengalaman praktis di sektor publik dan pemerintahan, termasuk di <strong>Kementerian Kehutanan RI</strong> dan <strong>Sekretariat Jenderal MPR RI</strong>. Teruji dalam perumusan <em>legal memorandum</em>, penyelesaian sengketa keperdataan, analisis kebijakan, serta kepemimpinan persidangan dan organisasi. Didukung oleh sertifikasi BNSP di bidang <strong>Penyelesaian Perselisihan Hubungan Industrial</strong> dan manajemen SDM. Siap berkontribusi secara profesional di bidang <em>Corporate Legal, Legal Compliance, Legal Research, Industrial Relations</em>, maupun <em>Government Relations</em>.
+                </div>
+            </section>
+
+            <!-- Pengalaman Organisasi -->
+            <section id="organization" class="section-container">
+                <div class="section-header">
+                    <h2>Organisasi & Kepemimpinan</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-top">
+                        <div class="card-title-group">
+                            <h3>Ketua Panitia — Musyawarah Luar Biasa (MUSLUB) III</h3>
+                            <div class="institution">Komunitas Peradilan Semu (KPS) FH Universitas Pamulang</div>
+                        </div>
+                        <span class="card-date">Agustus 2024</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><strong>Kepemimpinan Organisasi:</strong> Memimpin dan mengoordinasikan seluruh jajaran panitia untuk memastikan agenda Musyawarah Luar Biasa III KPS FH UNPAM berjalan terstruktur dan akuntabel[cite: 2].</li>
+                        <li><strong>Manajemen Operasional & Sidang:</strong> Mengelola penyusunan alur persidangan internal, administrasi keputusan musyawarah, serta tata kelola logistik kegiatan[cite: 2].</li>
+                        <li><strong>Komunikasi Pemangku Kepentingan:</strong> Menjadi penghubung utama antara panitia pelaksana, pengurus harian, dan jajaran pimpinan organisasi[cite: 2].</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Pengalaman Kerja -->
+            <section id="experience" class="section-container">
+                <div class="section-header">
+                    <h2>Pengalaman Kerja</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-top">
+                        <div class="card-title-group">
+                            <h3>Legal Intern</h3>
+                            <div class="institution">Kementerian Kehutanan Republik Indonesia</div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Direktorat Pengawasan, Pengenaan Sanksi Administratif dan Keperdataan Kehutanan</div>
+                        </div>
+                        <span class="card-date">Feb 2026 – Mar 2026</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><strong>Analisis & Legal Memorandum:</strong> Menyusun memorandum hukum terkait sanksi administratif dan hukum keperdataan di sektor kehutanan guna mendukung proses penegakan hukum lingkungan[cite: 1].</li>
+                        <li><strong>Pendampingan Mediasi:</strong> Terlibat aktif dalam prosedur mediasi dan penanganan negosiasi sengketa keperdataan sektor kehutanan[cite: 1].</li>
+                        <li><strong>Dokumentasi Resmi Instansi:</strong> Bertindak sebagai notulis rapat koordinasi lintas kementerian dan mengelola rekapitulasi *minutes of meeting* (MoM)[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-top">
+                        <div class="card-title-group">
+                            <h3>Legal Intern</h3>
+                            <div class="institution">Sekretariat Jenderal MPR RI</div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Biro Persidangan dan Pemasyarakatan Konstitusi</div>
+                        </div>
+                        <span class="card-date">Agt 2025 – Sep 2025</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><strong>Tata Kelola Korespondensi:</strong> Mengelola alur persuratan dinas, kearsipan resmi, dan administrasi hukum di Biro Persidangan[cite: 1].</li>
+                        <li><strong>Dukungan Persidangan Negara:</strong> Membantu persiapan teknis dan substansial untuk agenda rapat serta sidang kelembagaan MPR RI[cite: 1].</li>
+                        <li><strong>Sidang Tahunan MPR RI:</strong> Berkontribusi langsung dalam tim pelaksana kelancaran Sidang Tahunan Majelis Permusyawaratan Rakyat[cite: 1].</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Keahlian Utama -->
+            <section id="skills" class="section-container">
+                <div class="section-header">
+                    <h2>Keahlian Utama</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h4>Analisis & Riset Hukum</h4>
+                        <p>Legal Research & Analysis, Policy Review, Legal Memoranda Drafting[cite: 1].</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fa-solid fa-gavel"></i>
+                        <h4>Penyelesaian Sengketa</h4>
+                        <p>Pendampingan Negosiasi, Mediasi Keperdataan, Perselisihan Hubungan Industrial[cite: 1].</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fa-solid fa-people-roof"></i>
+                        <h4>Hubungan Industrial & HR</h4>
+                        <p>Penyelesaian Perselisihan (BNSP), HR Development, Talent Management[cite: 1].</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <h4>Administrasi Sektor Publik</h4>
+                        <p>Official Correspondence, Dokumentasi Rapat Negara, Tata Kelola Persidangan[cite: 1].</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sertifikasi & Pelatihan -->
+            <section id="certifications" class="section-container">
+                <div class="section-header">
+                    <h2>Sertifikasi & Pelatihan</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge"><i class="fa-solid fa-certificate"></i></div>
+                        <div>
+                            <strong style="color: var(--text-heading); font-size: 0.9rem;">BNSP Kualifikasi 5</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Pencegahan & Penyelesaian Perselisihan Hubungan Industrial[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-badge"><i class="fa-brands fa-microsoft"></i></div>
+                        <div>
+                            <strong style="color: var(--text-heading); font-size: 0.9rem;">Microsoft Word 2016</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Microsoft Office Specialist (MOS)[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-badge"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <strong style="color: var(--text-heading); font-size: 0.9rem;">HR: Talent Management</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Short Class Training[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-badge"><i class="fa-solid fa-table"></i></div>
+                        <div>
+                            <strong style="color: var(--text-heading); font-size: 0.9rem;">Microsoft Excel Data Analysis</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Lookup Formulas (VLOOKUP/HLOOKUP)[cite: 1]</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pendidikan -->
+            <section id="education" class="section-container">
+                <div class="section-header">
+                    <h2>Pendidikan</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-top">
+                        <div class="card-title-group">
+                            <h3>Universitas Pamulang</h3>
+                            <div class="institution">Sarjana Hukum (S.H.) — IPK 3.84 / 4.00 (Summa Cum Laude)</div>
+                        </div>
+                        <span class="card-date">Juli 2022 – Juli 2026</span>
+                    </div>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-top">
+                        <div class="card-title-group">
+                            <h3>SMK Letris Indonesia 2</h3>
+                            <div class="institution">Teknik Komputer Jaringan dan Telekomunikasi</div>
+                        </div>
+                        <span class="card-date">Juni 2019 – Juni 2022</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
